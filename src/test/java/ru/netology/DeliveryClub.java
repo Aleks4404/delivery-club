@@ -60,7 +60,7 @@ public class DeliveryClub {
         driver.get("https://www.delivery-club.ru/samara");
         driver.findElement(By.className("header-login-button")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//div[2]/div[1]/div[1]/label/input")).sendKeys("9379855181" + Keys.ENTER);
+        driver.findElement(By.xpath("//div[2]/div[1]/div[1]/label/input")).sendKeys("9270987345" + Keys.ENTER);
         //Wait until alert is present
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
