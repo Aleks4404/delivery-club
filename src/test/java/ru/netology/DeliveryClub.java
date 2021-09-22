@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -60,13 +59,9 @@ public class DeliveryClub {
         driver.get("https://www.delivery-club.ru/samara");
         driver.findElement(By.className("header-login-button")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//div[2]/div[1]/div[1]/label/input")).sendKeys("9270987345" + Keys.ENTER);
-        //Wait until alert is present
-        wait.until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert().accept();
-        String ExpectedConditions = "Код отправлен на номер";
-        String Actual = driver.findElement(By.xpath("//body/div[3]//div[2]//div[2]//div[2]/div[1]")).getText();
-        assertEquals(ExpectedConditions, Actual);
-//        /html/body/div[3]/div/div[2]/div/div/div[2]/div/div[2]/div[1]
+        driver.findElement(By.xpath("//div[2]/div[1]/div[1]/label/input")).sendKeys("92709873484");
+        String expected = "Код из СМС";
+        String actual = driver.findElement(By.cssSelector("div.verification__container.verification--active section span.label-title--def.is-required")).getText();
+        assertEquals(expected, actual);
     }
 }
